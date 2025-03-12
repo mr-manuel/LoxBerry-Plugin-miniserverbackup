@@ -1,5 +1,5 @@
 <?php
-// LoxBerry Miniserverbackup NG Plugin
+// LoxBerry Miniserver Backup NG Plugin
 // Christian Woerstenfeld - git@loxberry.woerstenfeld.de
 
 // Header output
@@ -338,7 +338,7 @@ set_time_limit(0);
 $at_least_one_save = 0;
 $saved_ms=array();
 $problematic_ms=array();
-array_push($summary,"<HR> ");
+array_push($summary,"<hr> ");
 ksort($ms);
 $connection_data_returncode0 = 0;
 $randomsleep = 1;
@@ -701,7 +701,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         {
             create_clean_workdir_tmp($workdir_tmp);
             file_put_contents($backupstate_file,"-");
-            array_push($summary,"<HR> ");
+            array_push($summary,"<hr> ");
             if ( $connection_data_returncode != 3 ) array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
             continue;
         }
@@ -714,7 +714,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
     if ( $miniserver['IPAddress'] == "" )
     {
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0003_MS_CONFIG_NO_IP"],3);
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         curl_close($curl_dns);
         $connection_data_returncode = 1;
@@ -735,7 +735,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0018_ERROR_READ_LOCAL_MS_IP"]." ".$miniserver['Name']." ".curl_error($curl),3);
         create_clean_workdir_tmp($workdir_tmp);
         file_put_contents($backupstate_file,"-");
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         continue;
     }
@@ -751,7 +751,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
             debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0018_ERROR_READ_LOCAL_MS_IP"]." ".$url." => ".nl2br(htmlentities($read_line)),3);
             create_clean_workdir_tmp($workdir_tmp);
             file_put_contents($backupstate_file,"-");
-            array_push($summary,"<HR> ");
+            array_push($summary,"<hr> ");
             array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
             continue;
         }
@@ -764,7 +764,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0019_ERROR_READ_LOCAL_MS_VERSION"]." ".curl_error($curl),3);
         create_clean_workdir_tmp($workdir_tmp);
         file_put_contents($backupstate_file,"-");
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         continue;
     }
@@ -781,7 +781,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
             debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0019_ERROR_READ_LOCAL_MS_VERSION"]." ".curl_error($curl),3);
             create_clean_workdir_tmp($workdir_tmp);
             file_put_contents($backupstate_file,"-");
-            array_push($summary,"<HR> ");
+            array_push($summary,"<hr> ");
             array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
             continue;
         }
@@ -810,7 +810,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
                 debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0049_ERR_INVALID_MOUNTPOINT"]." ".$temp_finalstorage,3);
                 create_clean_workdir_tmp($workdir_tmp);
                 file_put_contents($backupstate_file,"-");
-                array_push($summary,"<HR> ");
+                array_push($summary,"<hr> ");
                 array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
                 continue;
             }
@@ -829,7 +829,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
                 debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0049_ERR_INVALID_MOUNTPOINT"]." ".$temp_finalstorage,3);
                 create_clean_workdir_tmp($workdir_tmp);
                 file_put_contents($backupstate_file,"-");
-                array_push($summary,"<HR> ");
+                array_push($summary,"<hr> ");
                 array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
                 continue;
             }
@@ -847,7 +847,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
                 debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0049_ERR_INVALID_MOUNTPOINT"]." ".$finalstorage,3);
                 create_clean_workdir_tmp($workdir_tmp);
                 file_put_contents($backupstate_file,"-");
-                array_push($summary,"<HR> ");
+                array_push($summary,"<hr> ");
                 array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
                 continue;
             }
@@ -878,7 +878,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0024_CREATE_BACKUP_SUB_FOLDER"]." ".$savedir_path."/".$bkpfolder." (".join(" ",$resultarray).")",3);
         create_clean_workdir_tmp($workdir_tmp);
         file_put_contents($backupstate_file,"-");
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         continue;
     }
@@ -937,7 +937,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         debug(__line__,"MS#".$msno." ".$L["MINISERVERBACKUP.INF_0032_CLEAN_WORKDIR_TMP"]." ".$workdir_tmp);
         create_clean_workdir_tmp($workdir_tmp);
         file_put_contents($backupstate_file,"-");
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         continue;
     }
@@ -950,7 +950,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0002_ERROR_INIT_CURL"],3);
         create_clean_workdir_tmp($workdir_tmp);
         file_put_contents($backupstate_file,"-");
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         continue;
     }
@@ -1054,7 +1054,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
                     {
                         create_clean_workdir_tmp($workdir_tmp);
                         file_put_contents($backupstate_file,"-");
-                        array_push($summary,"<HR> ");
+                        array_push($summary,"<hr> ");
                         if ( $connection_data_returncode != 3 ) array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
                         continue;
                     }
@@ -1093,7 +1093,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
                     debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0070_TOO_MANY_DOWNLOAD_ERRORS"],3);
                     create_clean_workdir_tmp($workdir_tmp);
                     file_put_contents($backupstate_file,"-");
-                    array_push($summary,"<HR> ");
+                    array_push($summary,"<hr> ");
                     array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
                     continue;
                 }
@@ -1241,7 +1241,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         {
             create_clean_workdir_tmp($workdir_tmp);
             file_put_contents($backupstate_file,"-");
-            array_push($summary,"<HR> ");
+            array_push($summary,"<hr> ");
             array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
             continue;
         }
@@ -1291,7 +1291,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
                 debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0049_ERR_INVALID_MOUNTPOINT"]." ".$finalstorage,3);
                 create_clean_workdir_tmp($workdir_tmp);
                 file_put_contents($backupstate_file,"-");
-                array_push($summary,"<HR> ");
+                array_push($summary,"<hr> ");
                 array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
                 continue;
             }
@@ -1314,7 +1314,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
                 debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0049_ERR_INVALID_MOUNTPOINT"]." ".$finalstorage,3);
                 create_clean_workdir_tmp($workdir_tmp);
                 file_put_contents($backupstate_file,"-");
-                array_push($summary,"<HR> ");
+                array_push($summary,"<hr> ");
                 array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
                 continue;
             }
@@ -1334,7 +1334,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
                 debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0049_ERR_INVALID_MOUNTPOINT"]." ".$finalstorage,3);
                 create_clean_workdir_tmp($workdir_tmp);
                 file_put_contents($backupstate_file,"-");
-                array_push($summary,"<HR> ");
+                array_push($summary,"<hr> ");
                 array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
                 continue;
             }
@@ -1355,7 +1355,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0012_PROBLEM_CREATING_SAVE_DIR"]." ".$finalstorage." (".join(" ",$resultarray).")",3);
         create_clean_workdir_tmp($workdir_tmp);
         file_put_contents($backupstate_file,"-");
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         continue;
     }
@@ -1368,7 +1368,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0039_FINAL_STORAGE_NOT_WRITABLE"],3);
         create_clean_workdir_tmp($workdir_tmp);
         file_put_contents($backupstate_file,"-");
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         continue;
     }
@@ -1408,7 +1408,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
             debug (__line__,"MS#".$msno." ".str_ireplace("<free>",formatBytes($freespace,0),str_ireplace("<need>",formatBytes($full_backup_size,0),$L["ERRORS.ERR_0054_NOT_ENOUGH_FREE_SPACE"])),2);
             create_clean_workdir_tmp($workdir_tmp);
             file_put_contents($backupstate_file, "-");
-            array_push($summary,"<HR> ");
+            array_push($summary,"<hr> ");
             array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
             continue;
         }
@@ -1561,7 +1561,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         {
             create_clean_workdir_tmp($workdir_tmp);
             file_put_contents($backupstate_file,"-");
-            array_push($summary,"<HR> ");
+            array_push($summary,"<hr> ");
             array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
             continue;
         }
@@ -1713,7 +1713,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0039_FINAL_STORAGE_NOT_WRITABLE"]." ".$finalstorage,3);
         create_clean_workdir_tmp($workdir_tmp);
         file_put_contents($backupstate_file,"-");
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         continue;
 
@@ -1723,7 +1723,7 @@ for ( $msno = 1; $msno <= count($ms); $msno++ )
     file_put_contents($backupstate_file,str_ireplace("<MS>",$msno,$L["MINISERVERBACKUP.INF_0136_BACKUP_COMPLETED_MS"]));
     @system("php -f ".dirname($_SERVER['PHP_SELF']).'/ajax_config_handler.php LAST_SAVE'.$msno.'='.$last_save_stamp.' >/dev/null 2>&1');
     $at_least_one_save = 1;
-    array_push($summary,"<HR> ");
+    array_push($summary,"<hr> ");
     array_push($saved_ms," #".$msno." (".$miniserver['Name'].")");
     $log->LOGTITLE($L["MINISERVERBACKUP.INF_0136_BACKUP_COMPLETED_MS"]." #".$msno." (".$miniserver['Name'].")");
     @system("php -f ".dirname($_SERVER['PHP_SELF']).'/ajax_config_handler.php LAST_ERROR'.$msno.'=0 >/dev/null 2>&1');
@@ -1770,7 +1770,7 @@ if ( count($summary) > 2 )
     error_log($L["MINISERVERBACKUP.INF_9999_SUMMARIZE_ERRORS"]);
     foreach ($summary as &$errors)
     {
-        if ( ! preg_match("/<HR>/i", $errors) && $errors != " " )
+        if ( ! preg_match("/<hr>/i", $errors) && $errors != " " )
         {
             error_log($errors);
         }
@@ -1813,11 +1813,11 @@ foreach ($summary as &$errors)
         $err_html .= "<br>".$errors;
     }
 }
-#$err_html      = preg_replace('/\\n+/i','',$err_html);
-#$err_html      = preg_replace('/\\r+/i','',$err_html);
-$err_html      = preg_replace('/\s\s+/i',' ',$err_html);
-$err_html      = preg_replace('/<HR>\s<br>+/i','<HR>',$err_html);
-$err_html     = preg_replace("/(<HR>)\\1+/", "$1", $err_html);
+# $err_html = preg_replace('/\\n+/i','',$err_html);
+# $err_html = preg_replace('/\\r+/i','',$err_html);
+$err_html = preg_replace('/\s\s+/i',' ',$err_html);
+$err_html = preg_replace('/<hr>\s<br>+/i','<hr>',$err_html);
+$err_html = preg_replace("/(<hr>)\\1+/", "$1", $err_html);
 if (str_replace(array('<ALERT>', '<CRITICAL>','<ERROR>'),'', $err_html) != $err_html)
 {
     $at_least_one_error = 1;
@@ -1889,15 +1889,18 @@ if ( ( $at_least_one_error == 1 || $at_least_one_warning == 1 || $at_least_one_s
             debug(__line__,$L["MINISERVERBACKUP.INF_0120_SEND_EMAIL_INFO"]." From: ".$mailFromName.htmlentities(" <".$mailFrom."> ")." To: ".$mailTo,6);
             if ( $at_least_one_error == 1 )
             {
-                $status = "FAILED =E2=9D=8C"; // Fail X
+                $status = "FAILED";
+                // $status .= " =E2=9D=8C"; // X
             }
             else if ( $at_least_one_warning == 1 )
             {
-                $status = "WARNING =E2=9D=95"; // Warning !
+                $status = "WARNING";
+                // $status .= "=E2=9D=95"; // Exclamation mark
             }
             else
             {
-                $status = "SUCCESS =E2=9C=85"; // OK V
+                $status = "SUCCESS";
+                // $status .= "=E2=9C=85"; // Checkmark
             }
 
             $html = "From: ".$mailFromName." <".$mailFrom.">
@@ -1912,12 +1915,7 @@ This is a multi-part message in MIME format.
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 
-
-
-
-
-".strip_tags( $L["EMAIL.EMAIL_BODY"] )."\n".strip_tags(implode("\n",$summary))."
-
+".strip_tags($L["EMAIL.EMAIL_BODY"])."\n".strip_tags(implode("\n", $summary))."
 
 \n--\n".strip_tags($L["EMAIL.EMAIL_SINATURE"])."
 
@@ -1925,36 +1923,39 @@ Content-Transfer-Encoding: 8bit
 Content-Type: multipart/related;
  boundary=\"------------".$inner_boundary."\"
 
-
 --------------".$inner_boundary."
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: 8bit
 
 <html>
-  <head>
-    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">
-  </head>
-  <body style=\"margin:0px;\" text=\"#000000\" bgcolor=\"#FFFFFF\">
+    <head>
+        <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">
+        <style>
+            body { margin: 0px; padding: 10px; color: #1e1e1e; background: #fafafa; font-family: 'Calibri', 'Verdana', sans-serif; }
+            hr { margin: 4px 0;  }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img style=\"width: 100%; max-width: 800px;\" src=\"cid:logo_".$datetime->format("Y-m-d_i\hh\mH\s")."\" alt=\"Miniserver Backup NG\"><br>
+            <br>
+            ".$L["EMAIL.EMAIL_BODY"]."<br>
+            <br><hr>
+            ".preg_replace('/(^<br>|<br>\\s<br>+)/i', '', $err_html)."<br>
+            ".$L["EMAIL.EMAIL_SINATURE"]."
+        </div>
+    </body>
+</html>
 
-";
-            $htmlpicdata="";
-            $inline  =  'inline';
-            $email_image_part =  "\n<img src=\"cid:logo_".$datetime->format("Y-m-d_i\hh\mH\s")."\" alt=\"[Logo]\" />\n<br>";
-            $htmlpic      .= $email_image_part;
-            $htmlpicdata .= "--------------".$inner_boundary."
+--------------".$inner_boundary."
 Content-Type: image/jpeg; name=\"logo_".$datetime->format("Y-m-d_i\hh\mH\s").".png\"
 Content-Transfer-Encoding: base64
 Content-ID: <logo_".$datetime->format("Y-m-d_i\hh\mH\s").">
-Content-Disposition: ".$inline."; filename=\"logo_".$datetime->format("Y-m-d_i\hh\mH\s").".png\"
+Content-Disposition: inline; filename=\"logo_".$datetime->format("Y-m-d_i\hh\mH\s").".png\"
 
-".chunk_split(base64_encode(file_get_contents('logo.png')))."\n";
-            $html .= $htmlpic;
-            $html .= "<div style=\"padding:10px;\"><font face=\"Verdana\">".$L["EMAIL.EMAIL_BODY"]."<br>";
-            $html         .= preg_replace('/<br>\\s<br>+/i','',$err_html);
-            $html .="<br>\n\n--<br>".$L["EMAIL.EMAIL_SINATURE"]." </font></div></body></html>\n\n";
-            $html .= $htmlpicdata;
-            $html .= "--------------".$inner_boundary."--\n\n";
-            $html .= "--------------".$outer_boundary."--\n\n";
+".chunk_split(base64_encode(file_get_contents('logo.png')))."
+--------------".$inner_boundary."--
+--------------".$outer_boundary."--";
             $condition = "";
             switch (strtolower($plugin_cfg['MSBACKUP_USE_EMAILS']))
             {
@@ -2258,7 +2259,7 @@ function get_connection_data($checkurl)
     if ( $miniserver['IPAddress'] == "0.0.0.0" )
     {
         debug(__line__,"MS#".$msno." ".$L["ERRORS.ERR_0046_CLOUDDNS_IP_INVALID"]." => ".$miniserver['Name'],3);
-        array_push($summary,"<HR> ");
+        array_push($summary,"<hr> ");
         array_push($problematic_ms," #".$msno." (".$miniserver['Name'].")");
         $connection_data_returncode = 1;
         return $connection_data_returncode;

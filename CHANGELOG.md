@@ -8,6 +8,8 @@
 ## 2025.03.12
 
 - Added: Option to select at which time the backup is executed, if the interval is at least one day
+- Changed: Changed new name in a few more places
+- Changed: E-Mail layout updated
 - Changed: Hide backup compression field, if backup type is not 7-ZIP
 
 ## 2025.03.10

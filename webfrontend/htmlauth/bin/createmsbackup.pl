@@ -23,7 +23,7 @@ use LoxBerry::System;
 use LoxBerry::Log;
 my $backupstate_name     = "miniserverbackup-ng_state.txt";
 my $backupstate_tmp_file = "/tmp/".$backupstate_name;
-my $log                  = LoxBerry::Log->new ( name => 'Miniserverbackup NG CronJob' );
+my $log                  = LoxBerry::Log->new ( name => 'Miniserver Backup NG CronJob' );
 my %ERR                  = LoxBerry::System::readlanguage();
 LOGSTART $ERR{'MINISERVERBACKUP.INF_0128_CRON_CALLED'};
 # Complete redesign - from now it's PHP and not Perl anymore

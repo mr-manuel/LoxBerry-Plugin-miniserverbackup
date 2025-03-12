@@ -1,6 +1,6 @@
 <?php
 ######################################################################################
-#    Miniserverbackup NG API                                                            #
+#    Miniserver Backup NG API                                                        #
 #                                                                                    #
 # Usage:                                                                             #
 # http://loxberry/plugins/miniserverbackup/API.php?search=504F94ABCDEF               #
@@ -30,25 +30,25 @@ $plugindata = LBSystem::plugindata();
 $plugin_cfg_handle = @fopen($plugin_config_file, "r");
 if ($plugin_cfg_handle)
 {
-  while (!feof($plugin_cfg_handle))
-  {
-    $line_of_text = fgets($plugin_cfg_handle);
-    if (strlen($line_of_text) > 3)
+    while (!feof($plugin_cfg_handle))
     {
-      $config_line = explode('=', $line_of_text);
-      if ($config_line[0])
-      {
-          if (!isset($config_line[1])) $config_line[1] = "";
-
-        if ( $config_line[1] != "" )
+        $line_of_text = fgets($plugin_cfg_handle);
+        if (strlen($line_of_text) > 3)
         {
-            $plugin_cfg[$config_line[0]]=preg_replace('/\r?\n|\r/','', str_ireplace('"','',$config_line[1]));
-            LOGINF($L["MINISERVERBACKUP.INF_0064_CONFIG_PARAM"]." ".$config_line[0]."=".$plugin_cfg[$config_line[0]]);
+            $config_line = explode('=', $line_of_text);
+            if ($config_line[0])
+            {
+                if (!isset($config_line[1])) $config_line[1] = "";
+
+                if ( $config_line[1] != "" )
+                {
+                    $plugin_cfg[$config_line[0]]=preg_replace('/\r?\n|\r/','', str_ireplace('"','',$config_line[1]));
+                    LOGINF($L["MINISERVERBACKUP.INF_0064_CONFIG_PARAM"]." ".$config_line[0]."=".$plugin_cfg[$config_line[0]]);
+                }
+            }
         }
-      }
     }
-  }
-  fclose($plugin_cfg_handle);
+    fclose($plugin_cfg_handle);
 }
 
 foreach ($_REQUEST as $request_key => $request_value)

@@ -69,7 +69,7 @@ my @tag_cfg_data;
 my @msrow;
 my @ms;
 my %row_gen;
-my $log                         = LoxBerry::Log->new ( name => 'Miniserverbackup NG Admin-UI' );
+my $log                         = LoxBerry::Log->new ( name => 'Miniserver Backup NG Admin-UI' );
 my $do="form";
 my $which="0";
 my $msDisabled;

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Uninstall Miniserverbackup NG " >/tmp/uninstallminiserverbackup-ng.log 2>&1
+echo "Uninstall Miniserver Backup NG " >/tmp/uninstallminiserverbackup-ng.log 2>&1
 rm /tmp/miniserverbackup-ng_state.txt
 echo "Uninstallation done" >>/tmp/uninstallminiserverbackup-ng.log 2>&1
 date >>/tmp/uninstallminiserverbackup-ng.log 2>&1
