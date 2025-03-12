@@ -5,6 +5,10 @@
 - GitHub: https://github.com/mr-manuel/LoxBerry-Plugin-miniserverbackup-ng
 - Documentation: https://wiki.loxberry.de/plugins/miniserverbackup-ng/start
 
+## 2025.03.12
+
+- Added: Option to select at which time the backup is executed, if the interval is at least one day
+
 ## 2025.03.10
 
 - Added: Option to select backup compression or also no compression (for deduplication)

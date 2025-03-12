@@ -460,9 +460,18 @@
                             <TMPL_VAR GENERAL.BACKUP_INTERVAL_TXT>
                         </div>
                         <div>
-                            <select name="backup_interval<TMPL_VAR MSID>" id="backup_interval<TMPL_VAR MSID>"
-                                class="to_save">
+                            <select name="backup_interval<TMPL_VAR MSID>" id="backup_interval<TMPL_VAR MSID>" class="to_save">
                                 <TMPL_VAR BACKUP_INTERVAL_VALUE>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="ms_subdir_div_backup_schedule_time<TMPL_VAR MSID>">
+                        <div style="text-align:right;">
+                            <TMPL_VAR GENERAL.BACKUP_SCHEDULE_TIME_TXT>
+                        </div>
+                        <div>
+                            <select name="backup_schedule_time<TMPL_VAR MSID>" id="backup_schedule_time<TMPL_VAR MSID>" class="to_save">
+                                <TMPL_VAR BACKUP_SCHEDULE_TIME_VALUE>
                             </select>
                         </div>
                     </div>
@@ -491,8 +500,7 @@
                             <TMPL_VAR GENERAL.BACKUPS_TO_KEEP_TXT>
                         </div>
                         <div>
-                            <select name="backups_to_keep<TMPL_VAR MSID>" id="backups_to_keep<TMPL_VAR MSID>"
-                                class="to_save">
+                            <select name="backups_to_keep<TMPL_VAR MSID>" id="backups_to_keep<TMPL_VAR MSID>" class="to_save">
                                 <TMPL_VAR BACKUPS_TO_KEEP_VALUE>
                             </select>
                         </div>
@@ -502,8 +510,7 @@
                             <TMPL_VAR GENERAL.LAST_SAVE_TIME_TXT>
                         </div>
                         <div>
-                            <div name="last_save<TMPL_VAR MSID>" id="last_save<TMPL_VAR MSID>">&nbsp;<TMPL_VAR
-                                    LAST_SAVE>
+                            <div name="last_save<TMPL_VAR MSID>" id="last_save<TMPL_VAR MSID>">&nbsp;<TMPL_VAR LAST_SAVE>
                             </div>
                         </div>
                     </div>
@@ -512,8 +519,7 @@
                             <TMPL_VAR GENERAL.LAST_REBOOT_TXT>
                         </div>
                         <div>
-                            <div name="last_reboot<TMPL_VAR MSID>" id="last_reboot<TMPL_VAR MSID>">&nbsp;<TMPL_VAR
-                                    LAST_REBOOT>
+                            <div name="last_reboot<TMPL_VAR MSID>" id="last_reboot<TMPL_VAR MSID>">&nbsp;<TMPL_VAR LAST_REBOOT>
                             </div>
                         </div>
                     </div>
@@ -522,11 +528,13 @@
                     $(document).ready(function () {
                         $("#finalstorage<TMPL_VAR MSID>-button").remove(); $("#finalstorage<TMPL_VAR MSID>").css('display', '').selectmenu("menuWidget"); $("#finalstorage<TMPL_VAR MSID>").addClass("ui-mini ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow");
                         $("#backup_interval<TMPL_VAR MSID>-button").remove(); $("#backup_interval<TMPL_VAR MSID>").css('display', '').selectmenu("menuWidget"); $("#backup_interval<TMPL_VAR MSID>").addClass("ui-mini ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow");
+                        $("#backup_schedule_time<TMPL_VAR MSID>-button").remove(); $("#backup_schedule_time<TMPL_VAR MSID>").css('display', '').selectmenu("menuWidget"); $("#backup_schedule_time<TMPL_VAR MSID>").addClass("ui-mini ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow");
                         $("#file_format<TMPL_VAR MSID>-button").remove(); $("#file_format<TMPL_VAR MSID>").css('display', '').selectmenu("menuWidget"); $("#file_format<TMPL_VAR MSID>").addClass("ui-mini ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow");
                         $("#compression<TMPL_VAR MSID>-button").remove(); $("#compression<TMPL_VAR MSID>").css('display', '').selectmenu("menuWidget"); $("#compression<TMPL_VAR MSID>").addClass("ui-mini ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow");
                         $("#backups_to_keep<TMPL_VAR MSID>-button").remove(); $("#backups_to_keep<TMPL_VAR MSID>").css('display', '').selectmenu("menuWidget"); $("#backups_to_keep<TMPL_VAR MSID>").addClass("ui-mini ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow");
                         $("#finalstorage<TMPL_VAR MSID>").val('<TMPL_VAR CURRENT_STORAGE>');
                         $("#backup_interval<TMPL_VAR MSID>").val('<TMPL_VAR CURRENT_INTERVAL>');
+                        $("#backup_schedule_time<TMPL_VAR MSID>").val('<TMPL_VAR CURRENT_SCHEDULE_TIME>');
                         $("#file_format<TMPL_VAR MSID>").val('<TMPL_VAR CURRENT_FILE_FORMAT>');
                         $("#compression<TMPL_VAR MSID>").val('<TMPL_VAR CURRENT_COMPRESSION>');
                         $("#backups_to_keep<TMPL_VAR MSID>").val('<TMPL_VAR CURRENT_BACKUPS_TO_KEEP>');
@@ -537,9 +545,23 @@
                         else {
                             validate_enable('#ms_subdir<TMPL_VAR MSID>');
                         }
+
+                        // Trigger the change event on page load to set the initial state
+                        $("#backup_interval<TMPL_VAR MSID>").trigger('change');
+
                     });
                     $('#ms_subdir<TMPL_VAR MSID>').trigger('change')
                     var nbr_miniservers = miniservers.push('<TMPL_VAR MSID>');
+
+                    // Add change event handler for the dropdown field
+                    $("#backup_interval<TMPL_VAR MSID>").change(function() {
+                        if ($(this).val() >= 1440) {
+                            $('#ms_subdir_div_backup_schedule_time<TMPL_VAR MSID>').fadeIn('fast');
+                        } else {
+                            $('#ms_subdir_div_backup_schedule_time<TMPL_VAR MSID>').fadeOut('fast');
+                        }
+                    });
+
                 </script>
 
             </div>
@@ -589,11 +611,11 @@
 
         if ($("#msbackup_use_emails").val() == "on" || $("#msbackup_use_emails").val() == "fail") {
             $("#msbackup_use_emails").css('background-color', 'rgba(128,255,128,.2)');
-            $('#email_recipient_div').fadeIn('slow');
+            $('#email_recipient_div').fadeIn('fast');
         }
         else {
             $("#msbackup_use_emails").css('background-color', 'rgba(255,255,128,.2)');
-            $('#email_recipient_div').fadeOut('slow');
+            $('#email_recipient_div').fadeOut('fast');
             $('#email_recipient_div').val('');
         }
 
@@ -728,6 +750,7 @@
             miniservers.forEach(function (miniserver_id) {
                 // Add values per Miniserver
                 postData['backup_interval' + miniserver_id] = $('#backup_interval' + miniserver_id).val();
+                postData['backup_schedule_time' + miniserver_id] = $('#backup_schedule_time' + miniserver_id).val();
                 postData['file_format' + miniserver_id] = $('#file_format' + miniserver_id).val();
                 postData['compression' + miniserver_id] = $('#compression' + miniserver_id).val();
                 postData['backups_to_keep' + miniserver_id] = $('#backups_to_keep' + miniserver_id).val();

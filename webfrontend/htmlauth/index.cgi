@@ -340,8 +340,8 @@ exit;
     my @row;
     my %row;
     $backup_intervals = "";
-         LOGDEB "Miniserver $ms_id Name => ".$miniservers{$ms_id}{'Name'};
-         LOGDEB "Miniserver $ms_id IP   => ".$miniservers{$ms_id}{'IPAddress'};
+        LOGDEB "Miniserver $ms_id Name => ".$miniservers{$ms_id}{'Name'};
+        LOGDEB "Miniserver $ms_id IP   => ".$miniservers{$ms_id}{'IPAddress'};
 
         my %ms;
         $ms{Name}             = $miniservers{$ms_id}{'Name'};
@@ -362,9 +362,9 @@ exit;
         if ( $ms{IPAddress} eq "CloudDNS" )
         {
             my $t = Time::Piece->localtime;
-            #LOGERR     "[".$t->strftime("%Y-%m-%d %H:%M:%S")."] index.cgi: ".$L{"ERRORS.ERR_0046_CLOUDDNS_IP_INVALID"}." ".$miniservers{$ms_id}{'Name'};
-#            $msDisabled             = 1;
-#            $ms{IPAddress} = $L{"ERRORS.ERR_0046_CLOUDDNS_IP_INVALID"};
+            # LOGERR     "[".$t->strftime("%Y-%m-%d %H:%M:%S")."] index.cgi: ".$L{"ERRORS.ERR_0046_CLOUDDNS_IP_INVALID"}." ".$miniservers{$ms_id}{'Name'};
+            # $msDisabled             = 1;
+            # $ms{IPAddress} = $L{"ERRORS.ERR_0046_CLOUDDNS_IP_INVALID"};
         }
         else
         {
@@ -379,19 +379,19 @@ exit;
         my @netshares_for_workdir;
         foreach my $netshare (@netshares)
         {
-              $netshares_plus_subfolder[$nsc]{NETSHARE_SHARENAME} = $netshare->{NETSHARE_SHARENAME};
-              $netshares_plus_subfolder[$nsc]{NETSHARE_SUBFOLDER} = "/".sprintf("%03d", $ms_id)."_".$ms{Name};
-              $netshares_plus_subfolder[$nsc]{NETSHARE_SERVER}     = $netshare->{NETSHARE_SERVER};
-              $netshares_plus_subfolder[$nsc]{NETSHARE_SHAREPATH} = $netshare->{NETSHARE_SHAREPATH}."+";
+            $netshares_plus_subfolder[$nsc]{NETSHARE_SHARENAME} = $netshare->{NETSHARE_SHARENAME};
+            $netshares_plus_subfolder[$nsc]{NETSHARE_SUBFOLDER} = "/".sprintf("%03d", $ms_id)."_".$ms{Name};
+            $netshares_plus_subfolder[$nsc]{NETSHARE_SERVER}     = $netshare->{NETSHARE_SERVER};
+            $netshares_plus_subfolder[$nsc]{NETSHARE_SHAREPATH} = $netshare->{NETSHARE_SHAREPATH}."+";
 
-              $netshares_subdir_subfolder[$nsc]{NETSHARE_SHARENAME} = $netshare->{NETSHARE_SHARENAME};
-              $netshares_subdir_subfolder[$nsc]{NETSHARE_SUBFOLDER} = "/".$L{"GENERAL.SUGGEST_MS_SUBDIR"}."/".sprintf("%03d", $ms_id)."_".$ms{Name};
-              $netshares_subdir_subfolder[$nsc]{NETSHARE_SERVER}     = $netshare->{NETSHARE_SERVER};
-              $netshares_subdir_subfolder[$nsc]{NETSHARE_SHAREPATH} = $netshare->{NETSHARE_SHAREPATH}."~";
+            $netshares_subdir_subfolder[$nsc]{NETSHARE_SHARENAME} = $netshare->{NETSHARE_SHARENAME};
+            $netshares_subdir_subfolder[$nsc]{NETSHARE_SUBFOLDER} = "/".$L{"GENERAL.SUGGEST_MS_SUBDIR"}."/".sprintf("%03d", $ms_id)."_".$ms{Name};
+            $netshares_subdir_subfolder[$nsc]{NETSHARE_SERVER}     = $netshare->{NETSHARE_SERVER};
+            $netshares_subdir_subfolder[$nsc]{NETSHARE_SHAREPATH} = $netshare->{NETSHARE_SHAREPATH}."~";
 
-              $netshares_for_workdir[$nsc]{NETSHARE_SHARENAME} = $netshare->{NETSHARE_SHARENAME};
-              $netshares_for_workdir[$nsc]{NETSHARE_SERVER}     = $netshare->{NETSHARE_SERVER};
-              $netshares_for_workdir[$nsc]{NETSHARE_SHAREPATH} = $netshare->{NETSHARE_SHAREPATH};
+            $netshares_for_workdir[$nsc]{NETSHARE_SHARENAME} = $netshare->{NETSHARE_SHARENAME};
+            $netshares_for_workdir[$nsc]{NETSHARE_SERVER}     = $netshare->{NETSHARE_SERVER};
+            $netshares_for_workdir[$nsc]{NETSHARE_SHAREPATH} = $netshare->{NETSHARE_SHAREPATH};
             $nsc++;
         }
         push(@netshares_converted, @netshares);
@@ -407,19 +407,19 @@ exit;
         my @usbdevices_for_workdir;
         foreach my $usbdevice (@usbdevices)
         {
-              $usbdevices_plus_subfolder[$udc]{USBSTORAGE_DEVICE}     = $usbdevice->{USBSTORAGE_DEVICE};
-              $usbdevices_plus_subfolder[$udc]{USBSTORAGE_SUBFOLDER}     = sprintf("%03d", $ms_id)."_".$ms{Name};
-              $usbdevices_plus_subfolder[$udc]{USBSTORAGE_NO}          = $usbdevice->{USBSTORAGE_NO};
-              $usbdevices_plus_subfolder[$udc]{USBSTORAGE_DEVICEPATH} = $usbdevice->{USBSTORAGE_DEVICEPATH}."+";
+            $usbdevices_plus_subfolder[$udc]{USBSTORAGE_DEVICE}     = $usbdevice->{USBSTORAGE_DEVICE};
+            $usbdevices_plus_subfolder[$udc]{USBSTORAGE_SUBFOLDER}     = sprintf("%03d", $ms_id)."_".$ms{Name};
+            $usbdevices_plus_subfolder[$udc]{USBSTORAGE_NO}          = $usbdevice->{USBSTORAGE_NO};
+            $usbdevices_plus_subfolder[$udc]{USBSTORAGE_DEVICEPATH} = $usbdevice->{USBSTORAGE_DEVICEPATH}."+";
 
-              $usbdevices_subdir_subfolder[$udc]{USBSTORAGE_DEVICE}     = $usbdevice->{USBSTORAGE_DEVICE};
-              $usbdevices_subdir_subfolder[$udc]{USBSTORAGE_SUBFOLDER}= $L{"GENERAL.SUGGEST_MS_SUBDIR"}."/".sprintf("%03d", $ms_id)."_".$ms{Name};
-              $usbdevices_subdir_subfolder[$udc]{USBSTORAGE_NO}          = $usbdevice->{USBSTORAGE_NO};
-              $usbdevices_subdir_subfolder[$udc]{USBSTORAGE_DEVICEPATH} = $usbdevice->{USBSTORAGE_DEVICEPATH}."~";
+            $usbdevices_subdir_subfolder[$udc]{USBSTORAGE_DEVICE}     = $usbdevice->{USBSTORAGE_DEVICE};
+            $usbdevices_subdir_subfolder[$udc]{USBSTORAGE_SUBFOLDER}= $L{"GENERAL.SUGGEST_MS_SUBDIR"}."/".sprintf("%03d", $ms_id)."_".$ms{Name};
+            $usbdevices_subdir_subfolder[$udc]{USBSTORAGE_NO}          = $usbdevice->{USBSTORAGE_NO};
+            $usbdevices_subdir_subfolder[$udc]{USBSTORAGE_DEVICEPATH} = $usbdevice->{USBSTORAGE_DEVICEPATH}."~";
 
-              $usbdevices_for_workdir[$udc]{USBSTORAGE_DEVICE}     = $usbdevice->{USBSTORAGE_DEVICE};
-              $usbdevices_for_workdir[$udc]{USBSTORAGE_NO}          = $usbdevice->{USBSTORAGE_NO};
-              $usbdevices_for_workdir[$udc]{USBSTORAGE_DEVICEPATH} = $usbdevice->{USBSTORAGE_DEVICEPATH};
+            $usbdevices_for_workdir[$udc]{USBSTORAGE_DEVICE}     = $usbdevice->{USBSTORAGE_DEVICE};
+            $usbdevices_for_workdir[$udc]{USBSTORAGE_NO}          = $usbdevice->{USBSTORAGE_NO};
+            $usbdevices_for_workdir[$udc]{USBSTORAGE_DEVICEPATH} = $usbdevice->{USBSTORAGE_DEVICEPATH};
             $udc++;
         }
         push(@usbdevices_converted, @usbdevices);
@@ -428,86 +428,109 @@ exit;
         push(@usbdevices_workdir, @usbdevices_for_workdir);
         if ( $ms_id == 1 ) #Just fill for first MS
         {
-                    $row_gen{'WORKDIR_RAMDISK_TXT'}             = $L{"GENERAL.WORKDIR_RAMDISK_TXT"}." [".$loxberry_ramdisk."]";
-                    $row_gen{'WORKDIR_RAMDISK_VAL'}             = $loxberry_ramdisk;
-                    $row_gen{'WORKDIR_PLUGIN_DATADIR_TXT'}         = $L{"GENERAL.WORKDIR_PLUGIN_DATADIR_TXT"}." [".dirname($loxberry_datadir)."/workdir]";
-                    $row_gen{'WORKDIR_PLUGIN_DATADIR'}             = $loxberry_datadir;
-                    $row_gen{'WORKDIR_PATH'}                    = $loxberry_ramdisk;
-                    $row_gen{'WORKDIR_PATH'}                    = $Config{"MINISERVERBACKUP.WORKDIR_PATH"} if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH"} ne "" );
-                    $row_gen{'WORKDIR_PATH_SUBDIR'}                = "";
-                    $row_gen{'WORKDIR_PATH_SUBDIR'}                = $Config{"MINISERVERBACKUP.WORKDIR_PATH_SUBDIR"} if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH_SUBDIR"} ne "" );
-                    if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH"} ne "" )
-                    {
-                        my $filename = $backupstate_tmp_file;
-                        open(my $fh, '>', "/tmp/msb_free_space");
-                        print $fh $Config{"MINISERVERBACKUP.WORKDIR_PATH"};
-                        print $fh "/".$row_gen{'WORKDIR_PATH_SUBDIR'} if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH_SUBDIR"} ne "" );
-                        close $fh;
-                    }
-                    $row_gen{'NETSHARES_WORKDIR'}                 = \@netshares_workdir;
-                    $row_gen{'USBDEVICES_WORKDIR'}                 = \@usbdevices_workdir;
-                    $row_gen{'AUTOSAVE_WORKDIR'}                = 1 if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH"} eq "" );
+            $row_gen{'WORKDIR_RAMDISK_TXT'}             = $L{"GENERAL.WORKDIR_RAMDISK_TXT"}." [".$loxberry_ramdisk."]";
+            $row_gen{'WORKDIR_RAMDISK_VAL'}             = $loxberry_ramdisk;
+            $row_gen{'WORKDIR_PLUGIN_DATADIR_TXT'}         = $L{"GENERAL.WORKDIR_PLUGIN_DATADIR_TXT"}." [".dirname($loxberry_datadir)."/workdir]";
+            $row_gen{'WORKDIR_PLUGIN_DATADIR'}             = $loxberry_datadir;
+            $row_gen{'WORKDIR_PATH'}                    = $loxberry_ramdisk;
+            $row_gen{'WORKDIR_PATH'}                    = $Config{"MINISERVERBACKUP.WORKDIR_PATH"} if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH"} ne "" );
+            $row_gen{'WORKDIR_PATH_SUBDIR'}                = "";
+            $row_gen{'WORKDIR_PATH_SUBDIR'}                = $Config{"MINISERVERBACKUP.WORKDIR_PATH_SUBDIR"} if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH_SUBDIR"} ne "" );
+            if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH"} ne "" )
+            {
+                my $filename = $backupstate_tmp_file;
+                open(my $fh, '>', "/tmp/msb_free_space");
+                print $fh $Config{"MINISERVERBACKUP.WORKDIR_PATH"};
+                print $fh "/".$row_gen{'WORKDIR_PATH_SUBDIR'} if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH_SUBDIR"} ne "" );
+                close $fh;
+            }
+            $row_gen{'NETSHARES_WORKDIR'}                 = \@netshares_workdir;
+            $row_gen{'USBDEVICES_WORKDIR'}                 = \@usbdevices_workdir;
+            $row_gen{'AUTOSAVE_WORKDIR'}                = 1 if ( $Config{"MINISERVERBACKUP.WORKDIR_PATH"} eq "" );
         }
 
         push @{ $row{'MSROW'} }                    , \%ms;
-                $row{'MSID'}                     = $ms_id;
-                $row{'NETSHARES'}                 = \@netshares_converted;
-                $row{'USBDEVICES'}                 = \@usbdevices_converted;
-                $row{'LOCALSTORAGE'}             = $localstorage;
-                $row{'LOCALSTORAGENAME'}         = $localstorage."/".sprintf("%03d", $ms_id)."_".$ms{Name};
-                $row{'CURRENT_STORAGE'}            = $localstorage;
-                $row{'CURRENT_INTERVAL'}        = 0;
-                $row{'CURRENT_FILE_FORMAT'}        = "7z";
-                $row{'CURRENT_BACKUPS_TO_KEEP'}    = "7";
-                $row{'CURRENT_STORAGE'}            = $Config{"MINISERVERBACKUP.FINALSTORAGE".$ms_id} if ( $Config{"MINISERVERBACKUP.FINALSTORAGE".$ms_id} ne "" );
-                $row{'CURRENT_INTERVAL'}        = $Config{"MINISERVERBACKUP.BACKUP_INTERVAL".$ms_id} if ( $Config{"MINISERVERBACKUP.BACKUP_INTERVAL".$ms_id} ne "" );
-                $row{'CURRENT_INTERVAL'}        = 60 if ( $Config{"MINISERVERBACKUP.BACKUP_INTERVAL".$ms_id} eq "30" );
-                $row{'CURRENT_FILE_FORMAT'}        = $Config{"MINISERVERBACKUP.FILE_FORMAT".$ms_id} if ( $Config{"MINISERVERBACKUP.FILE_FORMAT".$ms_id} ne "" );
-                $row{'CURRENT_COMPRESSION'}        = $Config{"MINISERVERBACKUP.COMPRESSION".$ms_id} if ( $Config{"MINISERVERBACKUP.COMPRESSION".$ms_id} ne "" );
-                $row{'CURRENT_BACKUPS_TO_KEEP'}    = $Config{"MINISERVERBACKUP.BACKUPS_TO_KEEP".$ms_id} if ( $Config{"MINISERVERBACKUP.BACKUPS_TO_KEEP".$ms_id} ne "" );
-                $row{'MS_DISABLED'}                = $msDisabled;
-                $row{'CURRENT_MS_SUBDIR'}        = $L{"GENERAL.SUGGEST_MS_SUBDIR"};
-                $row{'CURRENT_MS_SUBDIR'}        = $Config{"MINISERVERBACKUP.MS_SUBDIR".$ms_id} if ( $Config{"MINISERVERBACKUP.MS_SUBDIR".$ms_id} ne "" );
+        $row{'MSID'}                     = $ms_id;
+        $row{'NETSHARES'}                = \@netshares_converted;
+        $row{'USBDEVICES'}               = \@usbdevices_converted;
+        $row{'LOCALSTORAGE'}             = $localstorage;
+        $row{'LOCALSTORAGENAME'}         = $localstorage."/".sprintf("%03d", $ms_id)."_".$ms{Name};
+        $row{'CURRENT_STORAGE'}          = $localstorage;
+        $row{'CURRENT_INTERVAL'}         = 0;
+        $row{'CURRENT_SCHEDULE_TIME'}    = -1;
+        $row{'CURRENT_FILE_FORMAT'}      = "7z";
+        $row{'CURRENT_BACKUPS_TO_KEEP'}  = "7";
+        $row{'CURRENT_STORAGE'}          = $Config{"MINISERVERBACKUP.FINALSTORAGE".$ms_id} if ( $Config{"MINISERVERBACKUP.FINALSTORAGE".$ms_id} ne "" );
+        $row{'CURRENT_INTERVAL'}         = $Config{"MINISERVERBACKUP.BACKUP_INTERVAL".$ms_id} if ( $Config{"MINISERVERBACKUP.BACKUP_INTERVAL".$ms_id} ne "" );
+        $row{'CURRENT_INTERVAL'}         = 60 if ( $Config{"MINISERVERBACKUP.BACKUP_INTERVAL".$ms_id} eq "30" );
+        $row{'CURRENT_SCHEDULE_TIME'}    = $Config{"MINISERVERBACKUP.BACKUP_SCHEDULE_TIME".$ms_id} if ( $Config{"MINISERVERBACKUP.BACKUP_SCHEDULE_TIME".$ms_id} ne "" );
+        $row{'CURRENT_FILE_FORMAT'}      = $Config{"MINISERVERBACKUP.FILE_FORMAT".$ms_id} if ( $Config{"MINISERVERBACKUP.FILE_FORMAT".$ms_id} ne "" );
+        $row{'CURRENT_COMPRESSION'}      = $Config{"MINISERVERBACKUP.COMPRESSION".$ms_id} if ( $Config{"MINISERVERBACKUP.COMPRESSION".$ms_id} ne "" );
+        $row{'CURRENT_BACKUPS_TO_KEEP'}  = $Config{"MINISERVERBACKUP.BACKUPS_TO_KEEP".$ms_id} if ( $Config{"MINISERVERBACKUP.BACKUPS_TO_KEEP".$ms_id} ne "" );
+        $row{'MS_DISABLED'}              = $msDisabled;
+        $row{'CURRENT_MS_SUBDIR'}        = $L{"GENERAL.SUGGEST_MS_SUBDIR"};
+        $row{'CURRENT_MS_SUBDIR'}        = $Config{"MINISERVERBACKUP.MS_SUBDIR".$ms_id} if ( $Config{"MINISERVERBACKUP.MS_SUBDIR".$ms_id} ne "" );
 
-                my $systemdatetime;
-                $systemdatetime                 = $L{"GENERAL.NO_LAST_SAVE"};
-                  $systemdatetime                 = qx(echo  $Config{"MINISERVERBACKUP.LAST_SAVE".$ms_id}| $awkbin '{print strftime("$L{"GENERAL.DATE_TIME_FORMAT"}", \$0)}') if ( $Config{"MINISERVERBACKUP.LAST_SAVE".$ms_id} ne "");
-                $row{'LAST_SAVE'}                = $systemdatetime;
-                 $row{'LAST_REBOOT'}                = $L{"GENERAL.NO_LAST_REBOOT_INFO"};
-                  $row{'LAST_REBOOT'}                = $Config{"MINISERVERBACKUP.LAST_REBOOT".$ms_id} if ( $Config{"MINISERVERBACKUP.LAST_REBOOT".$ms_id} ne "" );
+        my $systemdatetime;
+        $systemdatetime                  = $L{"GENERAL.NO_LAST_SAVE"};
+        $systemdatetime                  = qx(echo  $Config{"MINISERVERBACKUP.LAST_SAVE".$ms_id}| $awkbin '{print strftime("$L{"GENERAL.DATE_TIME_FORMAT"}", \$0)}') if ( $Config{"MINISERVERBACKUP.LAST_SAVE".$ms_id} ne "");
+        $row{'LAST_SAVE'}                = $systemdatetime;
+        $row{'LAST_REBOOT'}              = $L{"GENERAL.NO_LAST_REBOOT_INFO"};
+        $row{'LAST_REBOOT'}              = $Config{"MINISERVERBACKUP.LAST_REBOOT".$ms_id} if ( $Config{"MINISERVERBACKUP.LAST_REBOOT".$ms_id} ne "" );
 
-                foreach  (  sort { $a <=> $b } @backup_interval_minutes)
-                {
-                    $backup_intervals = $backup_intervals . '<OPTION value="'.$_.'"> '.$L{"MINISERVERBACKUP.INTERVAL".$_}.' </OPTION>' if ( $_ ne "" );
-                }
-                LOGDEB "Backup intervals for MS# $ms_id (".$ms{Name}."): ".join(',',@backup_interval_minutes)." current is: ".$row{'CURRENT_INTERVAL'};
-                $row{'BACKUP_INTERVAL_VALUE'}     = $backup_intervals;
+        foreach  (  sort { $a <=> $b } @backup_interval_minutes)
+        {
+            $backup_intervals = $backup_intervals . '
+                                <option value="'.$_.'"> '.$L{"MINISERVERBACKUP.INTERVAL".$_}.' </option>' if ( $_ ne "" );
+        }
+        LOGDEB "Backup intervals for MS# $ms_id (".$ms{Name}."): ".join(',',@backup_interval_minutes)." current is: ".$row{'CURRENT_INTERVAL'};
+        $row{'BACKUP_INTERVAL_VALUE'}     = $backup_intervals;
 
-                my $file_formats="";
-                foreach  (  sort { $a cmp $b } @file_formats)
-                {
-                    $file_formats = $file_formats . '<OPTION value="'.$_.'"> '.$L{"MINISERVERBACKUP.FILE_FORMAT_" . uc $_ }.' </OPTION>' if ( $_ ne "" );
-                }
-                LOGDEB "File formats for MS# $ms_id (".$ms{Name}."): ".join(',',@file_formats)." current is: ".$row{'CURRENT_FILE_FORMAT'};
-                $row{'BACKUP_FILE_FORMAT'}     = $file_formats;
+        # create list from 00:00 to 23:45
+        my $backup_schedule_time_values = '
+                                <option value="-1"> '.$L{"MINISERVERBACKUP.SCHEDULE_TIME-1"}.' </option>';
+        for (my $i=0; $i<24; $i++)
+        {
+            for (my $j=0; $j<60; $j=$j+30)
+            {
+                my $time = sprintf("%02d:%02d", $i, $j);
+                $backup_schedule_time_values = $backup_schedule_time_values . '
+                                <option value="'.$time.'"> '.$time.' </option>';
+            }
+        }
+        $row{'BACKUP_SCHEDULE_TIME_VALUE'}                 = $backup_schedule_time_values;
 
-                my $backup_compressions="";
-                $backup_compressions = $backup_compressions . '<OPTION value=""> '.$L{"MINISERVERBACKUP.COMPRESSION_DEFAULT" }.' </OPTION>';
-                $backup_compressions = $backup_compressions . '<OPTION value="0"> '.$L{"MINISERVERBACKUP.COMPRESSION_0" }.' </OPTION>';
-                $backup_compressions = $backup_compressions . '<OPTION value="5"> '.$L{"MINISERVERBACKUP.COMPRESSION_5" }.' </OPTION>';
-                $backup_compressions = $backup_compressions . '<OPTION value="9"> '.$L{"MINISERVERBACKUP.COMPRESSION_9" }.' </OPTION>';
-                $row{'BACKUP_COMPRESSION'}  = $backup_compressions;
+        my $file_formats="";
+        foreach  (  sort { $a cmp $b } @file_formats)
+        {
+            $file_formats = $file_formats . '
+                                <option value="'.$_.'"> '.$L{"MINISERVERBACKUP.FILE_FORMAT_" . uc $_ }.' </option>' if ( $_ ne "" );
+        }
+        LOGDEB "File formats for MS# $ms_id (".$ms{Name}."): ".join(',',@file_formats)." current is: ".$row{'CURRENT_FILE_FORMAT'};
+        $row{'BACKUP_FILE_FORMAT'}     = $file_formats;
 
-                my $backups_to_keep=0;
-                foreach  (  sort { $a <=> $b } %backups_to_keep_values)
-                {
-                    $backups_to_keep = $backups_to_keep . '<OPTION value="'.$_.'"> '.$_.' </OPTION>' if ( $_ ne "" );
-                }
-                LOGDEB "Backups to keep for MS# $ms_id (".$ms{Name}."): ".join(',',%backups_to_keep_values)." current is: ".$row{'CURRENT_BACKUPS_TO_KEEP'};
-                $row{'BACKUPS_TO_KEEP_VALUE'}     = $backups_to_keep;
+        my $backup_compressions="";
+        $backup_compressions = $backup_compressions . '
+                                <option value=""> '.$L{"MINISERVERBACKUP.COMPRESSION_DEFAULT" }.' </option>';
+        $backup_compressions = $backup_compressions . '
+                                <option value="0"> '.$L{"MINISERVERBACKUP.COMPRESSION_0" }.' </option>';
+        $backup_compressions = $backup_compressions . '
+                                <option value="5"> '.$L{"MINISERVERBACKUP.COMPRESSION_5" }.' </option>';
+        $backup_compressions = $backup_compressions . '
+                                <option value="9"> '.$L{"MINISERVERBACKUP.COMPRESSION_9" }.' </option>';
+        $row{'BACKUP_COMPRESSION'}  = $backup_compressions;
 
-                LOGDEB "Current storage for MS# $ms_id (".$ms{Name}."): ".$row{'CURRENT_STORAGE'};
-                LOGDEB "Curren MS# $ms_id (".$ms{Name}.") is disabled because of invalid IP. Can happen if CloudDNS is not reachable." if ( $msDisabled eq "1" );
+        my $backups_to_keep=0;
+        foreach  (  sort { $a <=> $b } %backups_to_keep_values)
+        {
+            $backups_to_keep = $backups_to_keep . '
+                                <option value="'.$_.'"> '.$_.' </option>' if ( $_ ne "" );
+        }
+        LOGDEB "Backups to keep for MS# $ms_id (".$ms{Name}."): ".join(',',%backups_to_keep_values)." current is: ".$row{'CURRENT_BACKUPS_TO_KEEP'};
+        $row{'BACKUPS_TO_KEEP_VALUE'}     = $backups_to_keep;
+
+        LOGDEB "Current storage for MS# $ms_id (".$ms{Name}."): ".$row{'CURRENT_STORAGE'};
+        LOGDEB "Curren MS# $ms_id (".$ms{Name}.") is disabled because of invalid IP. Can happen if CloudDNS is not reachable." if ( $msDisabled eq "1" );
 
 
         push(@template_row, \%row);

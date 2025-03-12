@@ -67,29 +67,29 @@ $plugindata = LBSystem::plugindata();
 $plugin_cfg_handle = @fopen($plugin_config_file, "r");
 if ($plugin_cfg_handle)
 {
-  while (!feof($plugin_cfg_handle))
-  {
-    $line_of_text = fgets($plugin_cfg_handle);
-    if (strlen($line_of_text) > 3)
+    while (!feof($plugin_cfg_handle))
     {
-      $config_line = explode('=', $line_of_text);
-      if ($config_line[0])
-      {
-          if (!isset($config_line[1])) $config_line[1] = "";
-
-        if ( $config_line[1] != "" )
+        $line_of_text = fgets($plugin_cfg_handle);
+        if (strlen($line_of_text) > 3)
         {
-            $plugin_cfg[$config_line[0]]=preg_replace('/\r?\n|\r/','', str_ireplace('"','',$config_line[1]));
-            LOGINF($L["MINISERVERBACKUP.INF_0064_CONFIG_PARAM"]." ".$config_line[0]."=".$plugin_cfg[$config_line[0]]);
+            $config_line = explode('=', $line_of_text);
+            if ($config_line[0])
+            {
+                if (!isset($config_line[1])) $config_line[1] = "";
+
+                if ( $config_line[1] != "" )
+                {
+                    $plugin_cfg[$config_line[0]]=preg_replace('/\r?\n|\r/','', str_ireplace('"','',$config_line[1]));
+                    LOGINF($L["MINISERVERBACKUP.INF_0064_CONFIG_PARAM"]." ".$config_line[0]."=".$plugin_cfg[$config_line[0]]);
+                }
+            }
         }
-      }
     }
-  }
-  fclose($plugin_cfg_handle);
+    fclose($plugin_cfg_handle);
 }
 else
 {
-  touch($plugin_config_file);
+    touch($plugin_config_file);
 }
 
 foreach ($_REQUEST as $config_key => $config_value)
@@ -183,16 +183,16 @@ if (flock($plugin_cfg_handle, LOCK_EX))
             }
 
 
-        LOGINF($L["MINISERVERBACKUP.INF_0071_CONFIG_PARAM_WRITTEN"]. " ". $config_key. "=" . $config_value );
-        $written = fwrite($plugin_cfg_handle, $config_key . '="' . $config_value .'"'."\r\n");
+            LOGINF($L["MINISERVERBACKUP.INF_0071_CONFIG_PARAM_WRITTEN"]. " ". $config_key. "=" . $config_value );
+            $written = fwrite($plugin_cfg_handle, $config_key . '="' . $config_value .'"'."\r\n");
 
-        if ( substr($config_key,0,11) == "LAST_REBOOT" || substr($config_key,0,9) == "LAST_SAVE" || substr($config_key,0,10) == "LAST_ERROR" )
-        {
-                    $output .= "";
-        }
-        else
-        {
-            if ( !$written )
+            if ( substr($config_key,0,11) == "LAST_REBOOT" || substr($config_key,0,9) == "LAST_SAVE" || substr($config_key,0,10) == "LAST_ERROR" )
+            {
+                        $output .= "";
+            }
+            else
+            {
+                if ( !$written )
                 {
                     $output .= "show_error('".$L["ERRORS.ERR_0035_ERROR_WRITE_CONFIG"]." => ".$config_key."');\n";
                     $output .= "$('#".strtolower($config_key)."').css('background-color','#FFC0C0');\n";
