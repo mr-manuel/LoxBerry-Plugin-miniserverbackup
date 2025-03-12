@@ -485,7 +485,7 @@
                             </select>
                         </div>
                     </div>
-                    <div>
+                    <div id="ms_subdir_div_backup_compression<TMPL_VAR MSID>">
                         <div style="text-align:right;">
                             <TMPL_VAR GENERAL.BACKUP_COMPRESSION_TXT>
                         </div>
@@ -548,6 +548,7 @@
 
                         // Trigger the change event on page load to set the initial state
                         $("#backup_interval<TMPL_VAR MSID>").trigger('change');
+                        $("#file_format<TMPL_VAR MSID>").trigger('change');
 
                     });
                     $('#ms_subdir<TMPL_VAR MSID>').trigger('change')
@@ -559,6 +560,13 @@
                             $('#ms_subdir_div_backup_schedule_time<TMPL_VAR MSID>').fadeIn('fast');
                         } else {
                             $('#ms_subdir_div_backup_schedule_time<TMPL_VAR MSID>').fadeOut('fast');
+                        }
+                    });
+                    $("#file_format<TMPL_VAR MSID>").change(function() {
+                        if ($(this).val() == "7z") {
+                            $('#ms_subdir_div_backup_compression<TMPL_VAR MSID>').fadeIn('fast');
+                        } else {
+                            $('#ms_subdir_div_backup_compression<TMPL_VAR MSID>').fadeOut('fast');
                         }
                     });
 
