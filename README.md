@@ -1,6 +1,6 @@
 # LoxBerry-Plugin-miniserverbackup-ng
 
-![Miniserver Backup NG](./icons/icon_128.png)
+![Miniserver Backup NG](./webfrontend/html/logo.png)
 
 This is a [LoxBerry](https://wiki.loxberry.de/) plugin and only works on the LoxBerry platform. For more details visit the [LoxBerry Wiki](https://wiki.loxberry.de/plugins/miniserverbackup-ng/start).
 
